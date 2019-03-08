@@ -28,7 +28,40 @@ namespace FirstUnitTests
             //assert
             Assert.AreEqual(expected, actual);
         }
-        
+
+        [Test]
+        public void ReverseTestWithoutLetters()
+        {
+            //arrange
+            var input = "a-bC-dEf-ghIj";
+            var expected = "j-Ih-gfE-dCba";             
+            StringUtils su = new StringUtils();
+
+            //act
+            var actual = su.Reverse(input);         
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        // folosim test cases pentru a nu duplica testele
+        // http://dotnetpattern.com/nunit-testcase-example 
+
+        [TestCase("ab-cd", ExpectedResult = "dc-ba")]
+        [TestCase("ab-cd-e", ExpectedResult = "e-dc-ba")]
+        [TestCase("ab-cd-ef", ExpectedResult = "fe-dc-ba")]
+        public string ReverseTestCases(string s)
+        {
+            //arrange
+            var input = s;
+            StringUtils su = new StringUtils();
+
+            //act
+            return su.Reverse(input);
+        }
+
+        // Exceptii
+
         [Test]
         public void ThrowExceptionWhenInputIsEmpty()
         {
@@ -55,21 +88,6 @@ namespace FirstUnitTests
 
             //act & assert
             Assert.Throws<InvalidOperationException>(() => su.Reverse(input));
-        }
-
-        [Test]
-        public void ReverseTestWithoutLetters()
-        {
-            //arrange
-            var input = "a-bC-dEf-ghIj";
-            var expected = "j-Ih-gfE-dCba";             
-            StringUtils su = new StringUtils();
-
-            //act
-            var actual = su.Reverse(input);         
-
-            //assert
-            Assert.AreEqual(expected, actual);
         }
     }
 }
