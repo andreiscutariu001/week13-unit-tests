@@ -7,7 +7,7 @@ namespace SimpleStringUtils
     {
         public string Reverse(string s)
         {
-            if (s == "")
+            if (string.IsNullOrEmpty(s))
             {
                 throw new InvalidOperationException("Input cannot be empty");
             }
