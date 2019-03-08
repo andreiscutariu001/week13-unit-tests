@@ -28,7 +28,7 @@ namespace FirstUnitTests
             //assert
             Assert.AreEqual(expected, actual);
         }
-
+        
         [Test]
         public void ThrowExceptionWhenInputIsEmpty()
         {
@@ -41,6 +41,7 @@ namespace FirstUnitTests
 
             Assert.Throws<InvalidOperationException>(() => su.Reverse(input));
             //or (sunt acelasi lucru)
+
             Assert.Throws(typeof(InvalidOperationException), () => su.Reverse(input));
             // assertam faptul ca se arunca o exceptie de tipul InvalidOperationException cand se apeleaza codul su.Reverse(input)
         }
@@ -56,19 +57,19 @@ namespace FirstUnitTests
             Assert.Throws<InvalidOperationException>(() => su.Reverse(input));
         }
 
-        //[Test]
-        //public void ReverseTestWithoutLetters()
-        //{
-        //    //arrange
-        //    var input = "a-bC-dEf-ghIj";
-        //    var expected = "j-Ih-gfE-dCba";                 //gasit sub numele de expected
-        //    StringUtils su = new StringUtils();
+        [Test]
+        public void ReverseTestWithoutLetters()
+        {
+            //arrange
+            var input = "a-bC-dEf-ghIj";
+            var expected = "j-Ih-gfE-dCba";             
+            StringUtils su = new StringUtils();
 
-        //    //act
-        //    var actual = su.Reverse(input);         //ce a returnat metoda efectiv
+            //act
+            var actual = su.Reverse(input);         
 
-        //    //assert
-        //    Assert.AreEqual(expected, actual);
-        //}
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
