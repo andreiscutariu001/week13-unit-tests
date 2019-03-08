@@ -8,6 +8,20 @@ namespace FirstUnitTests
     [TestFixture] // marcheaza clasa ca fiind o clasa ce va contine unit tests
     public class StringUtilsTests
     {
+        private StringUtils su;
+
+        [SetUp] // setup pentru partea comuna din teste - initializare sut
+        public void Setup()
+        {
+            su = new StringUtils();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            // se apeleaza cand se termina de rulat un test
+        }
+
         [Test] // marcam metoda ca fiind unit test
         public void HelloWorldTest()
         {
@@ -20,7 +34,6 @@ namespace FirstUnitTests
             //arrange
             var input = "ab-cd";
             var expected = "dc-ba";                 //gasit sub numele de expected
-            StringUtils su = new StringUtils();
 
             //act
             var actual = su.Reverse(input);         //ce a returnat metoda efectiv
@@ -35,7 +48,6 @@ namespace FirstUnitTests
             //arrange
             var input = "a-bC-dEf-ghIj";
             var expected = "j-Ih-gfE-dCba";             
-            StringUtils su = new StringUtils();
 
             //act
             var actual = su.Reverse(input);         
@@ -54,7 +66,6 @@ namespace FirstUnitTests
         {
             //arrange
             var input = s;
-            StringUtils su = new StringUtils();
 
             //act
             return su.Reverse(input);
@@ -67,7 +78,6 @@ namespace FirstUnitTests
         {
             //arrange
             var input = "";
-            StringUtils su = new StringUtils();
 
             //act & assert
             // https://github.com/nunit/docs/wiki/Assert.Throws
@@ -84,7 +94,6 @@ namespace FirstUnitTests
         {
             //arrange
             string input = null;
-            StringUtils su = new StringUtils();
 
             //act & assert
             Assert.Throws<InvalidOperationException>(() => su.Reverse(input));
